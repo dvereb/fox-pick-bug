@@ -16,36 +16,50 @@ Dave
 
 
 Thread 1 "a.out" received signal SIGSEGV, Segmentation fault.
-0x00007fffeb12f6cf in llvm::BitCastInst::BitCastInst(llvm::Value*, llvm::Type*, llvm::Twine const&, llv>
-#0  0x00007fffeb12f6cf in llvm::BitCastInst::BitCastInst(llvm::Value*, llvm::Type*, llvm::Twine const&,>
-#1  0x00007fffeb12d581 in llvm::CastInst::Create(llvm::Instruction::CastOps, llvm::Value*, llvm::Type*,>
-#2  0x00007fffeb0562d1 in ?? () from /lib/x86_64-linux-gnu/libLLVM-15.so.1
+0x00007fffeb12f6cf in llvm::BitCastInst::BitCastInst(llvm::Value*, llvm::Type*, llvm::Twine const&, llvm::Instruction*) () from /lib/x86_64-linux-gnu/libLLVM-15.so.1
+#0  0x00007fffeb12f6cf in llvm::BitCastInst::BitCastInst(llvm::Value*, llvm::Type*, llvm::Twine const&, llvm::Instruction*) () from /lib/x86_64-linux-gnu/libLLVM-15.so.1
+#1  0x00007fffeb12d581 in llvm::CastInst::Create(llvm::Instruction::CastOps, llvm::Value*, llvm::Type*, llvm::Twine const&, llvm::Instruction*) () from /lib/x86_64-linux-gnu/libLLVM-15.so.1
+#2  0x00007fffeb0562d1 in llvm::IRBuilderBase::CreateCast(llvm::Instruction::CastOps, llvm::Value*, llvm::Type*, llvm::Twine const&) () from /lib/x86_64-linux-gnu/libLLVM-15.so.1
 #3  0x00007fffeb097963 in LLVMBuildBitCast () from /lib/x86_64-linux-gnu/libLLVM-15.so.1
-#4  0x00007ffff17a02f0 in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#5  0x00007ffff17a057b in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#6  0x00007ffff17a0b40 in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#7  0x00007ffff1772dff in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#8  0x00007ffff1727679 in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#9  0x00007ffff1728190 in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#10 0x00007ffff172c75d in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#11 0x00007ffff16c513b in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#12 0x00007ffff16be792 in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#13 0x00007ffff16bec51 in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#14 0x00007ffff16bf0fb in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#15 0x00007ffff1433bcb in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#16 0x00007ffff136b9f9 in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#17 0x00007ffff136bc0d in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#18 0x00007ffff12d1b86 in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#19 0x00007ffff12d04f0 in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#20 0x00007ffff13db747 in ?? () from /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so
-#21 0x00007ffff73d28b4 in FX::FXGLCylinder::drawshape(FX::FXGLViewer*) () from /lib/x86_64-linux-gnu/li>
-#22 0x00007ffff73d4718 in FX::FXGLShape::draw(FX::FXGLViewer*) () from /lib/x86_64-linux-gnu/libFOX-1.6>
-#23 0x00007ffff73d32f4 in FX::FXGLGroup::hit(FX::FXGLViewer*) () from /lib/x86_64-linux-gnu/libFOX-1.6.>
-#24 0x00007ffff73d90d6 in FX::FXGLViewer::selectHits(unsigned int*&, int&, int, int, int, int) () from >
-#25 0x00007ffff73d9374 in FX::FXGLViewer::pick(int, int) () from /lib/x86_64-linux-gnu/libFOX-1.6.so.0
-#26 0x000055555555859f in FXGLWindow::onLeftBtnPress (this=0x618000007480, sender=0x61c000000080, sel=1>
-#27 0x0000555555558401 in FXGLWindow::handle (this=0x618000007480, sender=0x61c000000080, sel=196608, p>
-#28 0x00007ffff737e548 in FX::FXApp::dispatchEvent(_XEvent&) () from /lib/x86_64-linux-gnu/libFOX-1.6.s>
-#29 0x00007ffff737d0da in FX::FXApp::runOneEvent(bool) () from /lib/x86_64-linux-gnu/libFOX-1.6.so.0
-#30 0x00007ffff737d175 in FX::FXApp::run() () from /lib/x86_64-linux-gnu/libFOX-1.6.so.0
-#31 0x0000555555557cbe in main (argc=1, argv=0x7fffffffe148) at main.cpp:29
+#4  0x00007ffff17a02f0 in visit_alu (bld_base=bld_base@entry=0x7fffffff7a50, instr=instr@entry=0x6120000379c0) at ../src/gallium/auxiliary/gallivm/lp_bld_nir.c:1290
+#5  0x00007ffff17a057b in visit_block (block=0x6110000e6e30, block=0x6110000e6e30, bld_base=0x7fffffff7a50) at ../src/gallium/auxiliary/gallivm/lp_bld_nir.c:2565
+#6  visit_cf_list (bld_base=bld_base@entry=0x7fffffff7a50, list=<optimized out>, list=<optimized out>) at ../src/gallium/auxiliary/gallivm/lp_bld_nir.c:2631
+#7  0x00007ffff17a0b40 in lp_build_nir_llvm (bld_base=bld_base@entry=0x7fffffff7a50, nir=nir@entry=0x6150000fbc30) at ../src/gallium/auxiliary/gallivm/lp_bld_nir.c:2733
+#8  0x00007ffff1772dff in lp_build_nir_soa (gallivm=<optimized out>, shader=0x6150000fbc30, params=params@entry=0x7fffffff86a0, outputs=outputs@entry=0x7fffffff9030)
+    at ../src/gallium/auxiliary/gallivm/lp_bld_nir_soa.c:2814
+#9  0x00007ffff1727679 in generate_vs (builder=0x60d0000105e0, bld_mask=0x7fffffff85a0, clamp_vertex_color=1 '\001', draw_image=0x60f000019db0, draw_sampler=0x60f000019cc0, context_ptr=0x616000049880, 
+    system_values=0x7fffffff8750, inputs=0x7fffffff9a30, outputs=0x7fffffff9030, vs_type=..., variant=0x60f000019bd0) at ../src/gallium/auxiliary/draw/draw_llvm.c:997
+#10 draw_llvm_generate (llvm=llvm@entry=0x7fffe765e800, variant=variant@entry=0x60f000019bd0) at ../src/gallium/auxiliary/draw/draw_llvm.c:2297
+#11 0x00007ffff1728190 in draw_llvm_create_variant (llvm=llvm@entry=0x7fffe765e800, num_inputs=num_inputs@entry=3, key=key@entry=0x7fffffffa5e0) at ../src/gallium/auxiliary/draw/draw_llvm.c:905
+#12 0x00007ffff172c75d in llvm_middle_end_prepare (middle=<optimized out>, in_prim=<optimized out>, opt=<optimized out>, max_vertices=<optimized out>)
+    at ../src/gallium/auxiliary/draw/draw_pt_fetch_shade_pipeline_llvm.c:392
+#13 0x00007ffff16c513b in vsplit_prepare (frontend=0x625000163100, in_prim=<optimized out>, middle=<optimized out>, opt=<optimized out>) at ../src/gallium/auxiliary/draw/draw_pt_vsplit.c:234
+#14 0x00007ffff16be792 in draw_pt_arrays (draw=draw@entry=0x62900001e200, prim=PIPE_PRIM_QUAD_STRIP, index_bias_varies=false, draw_info=draw_info@entry=0x7fffffffb1c0, num_draws=num_draws@entry=1)
+    at ../src/gallium/auxiliary/draw/draw_pt.c:124
+#15 0x00007ffff16bec51 in draw_instances (draw=draw@entry=0x62900001e200, drawid_offset=drawid_offset@entry=0, info=info@entry=0x7fffffffb1d0, draws=draws@entry=0x7fffffffb1c0, 
+    num_draws=num_draws@entry=1) at ../src/gallium/auxiliary/draw/draw_pt.c:483
+#16 0x00007ffff16bf0fb in draw_vbo (draw=draw@entry=0x62900001e200, info=info@entry=0x7fffffffb1d0, drawid_offset=0, indirect=indirect@entry=0x0, draws=draws@entry=0x7fffffffb1c0, 
+    num_draws=num_draws@entry=1, patch_vertices=<optimized out>) at ../src/gallium/auxiliary/draw/draw_pt.c:616
+#17 0x00007ffff1433bcb in st_feedback_draw_vbo (ctx=ctx@entry=0x7fffe7681800, prims=prims@entry=0x7fffffffd620, nr_prims=20, ib=0x0, index_bounds_valid=<optimized out>, 
+    primitive_restart=<optimized out>, restart_index=0, min_index=<optimized out>, max_index=<optimized out>, num_instances=1, base_instance=0) at ../src/mesa/state_tracker/st_draw_feedback.c:459
+#18 0x00007ffff136b9f9 in _mesa_draw_gallium_fallback (ctx=<optimized out>, info=<optimized out>, drawid_offset=0, draws=<optimized out>, num_draws=20) at ../src/mesa/main/draw.c:1066
+#19 0x00007ffff136bc0d in _mesa_draw_gallium_multimode_fallback (ctx=0x7fffe7681800, info=0x7fffe76bc810, draws=0x7fffe76bc830, mode=0x7fffe76bcb30 '\b' <repeats 20 times>, "\006\b\b\b", num_draws=24)
+    at ../src/mesa/main/draw.c:1090
+#20 0x00007ffff12d1b86 in vbo_exec_vtx_flush (exec=exec@entry=0x7fffe76bc810) at ../src/mesa/vbo/vbo_exec_draw.c:335
+#21 0x00007ffff12d04f0 in vbo_exec_FlushVertices_internal (flags=1, exec=0x7fffe76bc810) at ../src/mesa/vbo/vbo_exec_api.c:685
+#22 vbo_exec_FlushVertices_internal (flags=1, exec=0x7fffe76bc810) at ../src/mesa/vbo/vbo_exec_api.c:679
+#23 vbo_exec_FlushVertices (ctx=ctx@entry=0x7fffe7681800, flags=flags@entry=1) at ../src/mesa/vbo/vbo_exec_api.c:1185
+#24 0x00007ffff13db747 in _mesa_Translatef (x=0, y=0, z=18) at ../src/mesa/main/matrix.c:725
+#25 0x00007ffff73d28b4 in FX::FXGLCylinder::drawshape (this=0x611000003380) at ../../src/FXGLCylinder.cpp:124
+#26 0x00007ffff73d4718 in FX::FXGLShape::draw (this=0x611000003380, viewer=0x618000007480) at ../../src/FXGLShape.cpp:322
+#27 0x00007ffff73d32f4 in FX::FXGLGroup::hit (this=0x603000053980, viewer=0x618000007480) at ../../src/FXGLObject.cpp:145
+#28 0x00007ffff73d90d6 in FX::FXGLViewer::selectHits (this=this@entry=0x618000007480, hits=@0x7fffffffda30: 0x61d000062280, nhits=@0x7fffffffda2c: 0, x=682, y=<optimized out>, w=w@entry=6, h=6)
+    at ../../src/FXGLViewer.cpp:717
+#29 0x00007ffff73d9374 in FX::FXGLViewer::pick (y=<optimized out>, x=<optimized out>, this=0x618000007480) at ../../src/FXGLViewer.cpp:786
+#30 FX::FXGLViewer::pick (this=0x618000007480, x=<optimized out>, y=<optimized out>) at ../../src/FXGLViewer.cpp:781
+#31 0x000055555555859f in FXGLWindow::onLeftBtnPress (this=0x618000007480, sender=0x61c000000080, sel=196608, ptr=0x61c000000280) at FXGLWindow.cpp:21
+#32 0x0000555555558401 in FXGLWindow::handle (this=0x618000007480, sender=0x61c000000080, sel=196608, ptr=0x61c000000280) at FXGLWindow.cpp:9
+#33 0x00007ffff737e548 in FX::FXApp::dispatchEvent (this=0x61c000000080, ev=...) at ../../src/FXApp.cpp:2412
+#34 0x00007ffff737d0da in FX::FXApp::runOneEvent (this=this@entry=0x61c000000080, blocking=blocking@entry=true) at ../../src/FXApp.cpp:3135
+#35 0x00007ffff737d175 in FX::FXApp::run (this=0x61c000000080) at ../../src/FXApp.cpp:3092
+#36 0x0000555555557cbe in main (argc=1, argv=0x7fffffffe108) at main.cpp:29
